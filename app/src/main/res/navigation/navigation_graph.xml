@@ -17,4 +17,10 @@
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
 
+    <fragment
+        android:id="@+id/drinkFragment"
+        android:name="com.example.thecocktailsapp.DrinkFragment"
+        android:label="fragment_drink"
+        tools:layout="@layout/fragment_drink" />
+
 </navigation>

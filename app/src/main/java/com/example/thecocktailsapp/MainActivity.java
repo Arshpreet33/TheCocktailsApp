@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(getApplicationContext(), "Search Item Clicked!", Toast.LENGTH_SHORT).show();
                 navController.navigate(R.id.searchFragment);
                 break;
-            case R.id.menu_item_disabled:
-                Toast.makeText(getApplicationContext(), "Disabled Item Clicked!", Toast.LENGTH_SHORT).show();
-                //navController.navigate(R.id.thirdFragment);
+            case R.id.menu_item_drink:
+                Toast.makeText(getApplicationContext(), "Drink Item Clicked!", Toast.LENGTH_SHORT).show();
+                navController.navigate(R.id.drinkFragment);
                 break;
             default:
                 Toast.makeText(getApplicationContext(), "Incorrect Menu Item Clicked", Toast.LENGTH_SHORT).show();

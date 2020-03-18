@@ -10,9 +10,9 @@
             android:id="@+id/menu_item_search"
             android:title="Search" />
         <item
-            android:id="@+id/menu_item_disabled"
-            android:enabled="false"
-            android:title="Disabled" />
+            android:id="@+id/menu_item_drink"
+            android:enabled="true"
+            android:title="Drink" />
 
     </group>
 
