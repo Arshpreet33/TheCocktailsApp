@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,8 +33,11 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     DataServices service;
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter recyclerAdapter;
+    //    private RecyclerView.Adapter recyclerAdapter;
+    private RecyclerAdapter recyclerAdapter;
     private RecyclerView.LayoutManager recyclerLayoutManager;
+
+    private NavController navController;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -54,6 +59,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         txtSearchDrink = getActivity().findViewById(R.id.text_search_drink);
         btnSearch = getActivity().findViewById(R.id.button_search);
@@ -121,6 +128,18 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         recyclerAdapter = new RecyclerAdapter(drinks);
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
+
+        recyclerAdapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+                Toast.makeText(getActivity().getApplicationContext(), drinks.get(position).getName(), Toast.LENGTH_SHORT).show();
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("drink", drinks.get(position));
+                navController.navigate(R.id.drinkFragment, bundle);
+            }
+        });
     }
 
 }
