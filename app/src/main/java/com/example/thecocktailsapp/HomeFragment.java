@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
-    TextView text;
+//    TextView text;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -46,47 +46,47 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        text = getActivity().findViewById(R.id.text_home_fragment);
-        text.setText("");
-        DataServices service = RetrofitClientInstance.getRetrofitInstance().create(DataServices.class);
-
-        Call<Drink> call = service.getDrinks();
-
-        call.enqueue(new Callback<Drink>() {
-            @Override
-            public void onResponse(Call<Drink> call, Response<Drink> response) {
-                if (!response.isSuccessful()) {
-                    text.setText(response.code());
-                    return;
-                }
-
-                try {
-                    Drink drinkList = response.body();
-                    List<Drink_> drinks = new ArrayList<>(drinkList.getDrinkList());
-
-                    for (Drink_ drink : drinks) {
-                        String content = "";
-                        content += "ID:        " + drink.getID() + "\n";
-                        content += "Name:      " + drink.getName() + "\n";
-                        content += "Category:  " + drink.getCategory() + "\n";
-                        content += "Alcoholic: " + drink.getAlcoholic() + "\n";
-                        content += "Glass:     " + drink.getGlass() + "\n";
-                        content += "IBA:       " + drink.getIBA() + "\n";
-                        content += "Steps:     " + drink.getSteps() + "\n";
-
-                        text.append(content);
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Drink> call, Throwable t) {
-                text.setText(t.getMessage());
-            }
-        });
+//        text = getActivity().findViewById(R.id.text_home_fragment);
+//        text.setText("");
+//        DataServices service = RetrofitClientInstance.getRetrofitInstance().create(DataServices.class);
+//
+//        Call<Drink> call = service.getDrinks();
+//
+//        call.enqueue(new Callback<Drink>() {
+//            @Override
+//            public void onResponse(Call<Drink> call, Response<Drink> response) {
+//                if (!response.isSuccessful()) {
+//                    text.setText(response.code());
+//                    return;
+//                }
+//
+//                try {
+//                    Drink drinkList = response.body();
+//                    List<Drink_> drinks = new ArrayList<>(drinkList.getDrinkList());
+//
+//                    for (Drink_ drink : drinks) {
+//                        String content = "";
+//                        content += "ID:        " + drink.getID() + "\n";
+//                        content += "Name:      " + drink.getName() + "\n";
+//                        content += "Category:  " + drink.getCategory() + "\n";
+//                        content += "Alcoholic: " + drink.getAlcoholic() + "\n";
+//                        content += "Glass:     " + drink.getGlass() + "\n";
+//                        content += "IBA:       " + drink.getIBA() + "\n";
+//                        content += "Steps:     " + drink.getSteps() + "\n";
+//
+//                        text.append(content);
+//                    }
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Drink> call, Throwable t) {
+//                text.setText(t.getMessage());
+//            }
+//        });
     }
 
 }

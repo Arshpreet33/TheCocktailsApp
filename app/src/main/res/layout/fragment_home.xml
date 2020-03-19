@@ -3,19 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#"
+    android:background="#E45454"
     android:orientation="vertical"
     tools:context=".HomeFragment">
-<ImageView
-    android:layout_width="300sp"
-    android:layout_height="500sp"
-    android:layout_marginLeft="60dp"
-    android:layout_marginTop="60dp"
-    android:src="@drawable/cocktail"
+
+    <ImageView
+        android:layout_width="300sp"
+        android:layout_height="500sp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/cocktail" >
 
 
-    >
+    </ImageView>
 
-
-</ImageView>
 </LinearLayout>
