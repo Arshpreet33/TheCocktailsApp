@@ -68,10 +68,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
 
         Drink_ currentDrink = drinksList.get(position);
 
-        String body = "Category: " + currentDrink.getCategory() + "\n" +
-                "Alcoholic: " + currentDrink.getAlcoholic();
+        //String body = "Category: " + currentDrink.getCategory() + "\n" +
+        //"Alcoholic: " + currentDrink.getAlcoholic();
 
-        holder.txtBody.setText(body);
+        holder.txtBody.setText("");
         holder.txtTitle.setText(currentDrink.getName());
 
         Picasso.get().load(currentDrink.getImageUrl()).into(holder.image);

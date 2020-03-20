@@ -56,16 +56,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (menuID) {
             case R.id.menu_item_home:
-                Toast.makeText(getApplicationContext(), "Home Item Clicked!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Home Item Clicked!", Toast.LENGTH_SHORT).show();
                 navController.navigate(R.id.homeFragment);
                 break;
             case R.id.menu_item_search:
-                Toast.makeText(getApplicationContext(), "Search Item Clicked!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Search Item Clicked!", Toast.LENGTH_SHORT).show();
                 navController.navigate(R.id.searchFragment);
                 break;
-            case R.id.menu_item_drink:
-                Toast.makeText(getApplicationContext(), "Drink Item Clicked!", Toast.LENGTH_SHORT).show();
-                navController.navigate(R.id.drinkFragment);
+            case R.id.menu_item_search_category:
+//                Toast.makeText(getApplicationContext(), "Search Item Clicked!", Toast.LENGTH_SHORT).show();
+                navController.navigate(R.id.categorySearchFragment);
+                break;
+            case R.id.menu_item_search_ingredient:
+//                Toast.makeText(getApplicationContext(), "Drink Item Clicked!", Toast.LENGTH_SHORT).show();
+                navController.navigate(R.id.ingredientSearchFragment);
                 break;
             default:
                 Toast.makeText(getApplicationContext(), "Incorrect Menu Item Clicked", Toast.LENGTH_SHORT).show();

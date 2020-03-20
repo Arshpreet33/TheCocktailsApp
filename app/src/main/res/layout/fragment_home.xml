@@ -12,20 +12,17 @@
         android:layout_height="300dp"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="15dp"
-
-        android:src="@drawable/cocktail">
-    </ImageView>
+        android:src="@drawable/cocktail" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cocktails App"
-        android:textSize="30dp"
-        android:textAlignment="center"
         android:gravity="center_horizontal"
-        android:textStyle="bold"
-        android:textColor="#bdb3a6">
-    </TextView>
+        android:text="Cocktails App"
+        android:textAlignment="center"
+        android:textColor="#bdb3a6"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,15 +31,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="when user click a menu and search by name,category and first name"
-            android:textSize="20dp"
-            android:textColor="#bdb3a6"
+            android:layout_margin="20dp"
             android:layout_marginTop="70dp"
             android:gravity="center_horizontal"
+            android:text="You can search drinks by Name, \nCategory, Ingredients."
+            android:textColor="#bdb3a6"
+            android:textSize="20dp" />
 
-            ></TextView>
     </LinearLayout>
-
 
 
 </LinearLayout>

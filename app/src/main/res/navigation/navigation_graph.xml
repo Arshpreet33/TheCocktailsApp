@@ -8,19 +8,29 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.thecocktailsapp.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.thecocktailsapp.SearchFragment"
-        android:label="fragment_search"
+        android:label="Search By Name"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/drinkFragment"
         android:name="com.example.thecocktailsapp.DrinkFragment"
-        android:label="fragment_drink"
+        android:label="Drink Details"
         tools:layout="@layout/fragment_drink" />
+    <fragment
+        android:id="@+id/ingredientSearchFragment"
+        android:name="com.example.thecocktailsapp.IngredientSearchFragment"
+        android:label="Search By Ingredient"
+        tools:layout="@layout/fragment_ingredient_search" />
+    <fragment
+        android:id="@+id/categorySearchFragment"
+        android:name="com.example.thecocktailsapp.categorySearchFragment"
+        android:label="Search By Category"
+        tools:layout="@layout/fragment_category_search" />
 
 </navigation>

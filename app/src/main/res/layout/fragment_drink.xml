@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:padding="6dp"
     tools:context=".DrinkFragment">
 
     <LinearLayout
@@ -16,8 +17,8 @@
 
         <ImageView
             android:id="@+id/drink_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp" />
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
 
     </LinearLayout>
 
@@ -33,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Name"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/drink_name"
@@ -57,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Category"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/drink_category"
@@ -65,30 +66,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Drink Category"
-            android:textSize="20sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Alcoholic"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/drink_alcoholic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Drink Alcoholic"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -104,15 +81,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Instructions"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
 
-        <TextView
-            android:id="@+id/drink_steps"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Drink Steps"
-            android:textSize="20sp" />
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/drink_steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Drink Steps"
+                android:textSize="20sp" />
+
+        </ScrollView>
 
     </LinearLayout>
 

@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,12 +23,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchFragment extends Fragment implements View.OnClickListener {
+public class IngredientSearchFragment extends Fragment implements View.OnClickListener {
 
-    EditText txtSearchDrink;
     Button btnSearch;
+    Spinner spinnerIngredient;
 
     private ArrayList<Drink_> drinks;
+    private ArrayList<SearchIngredient_> ingredients;
+    String ingredientName;
 
     DataServices service;
 
@@ -38,21 +41,20 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
     private NavController navController;
 
-    public SearchFragment() {
+    public IngredientSearchFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        return inflater.inflate(R.layout.fragment_ingredient_search, container, false);
     }
 
     @Override
@@ -61,27 +63,35 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-        txtSearchDrink = getActivity().findViewById(R.id.text_search_drink);
-        btnSearch = getActivity().findViewById(R.id.button_search);
+        spinnerIngredient = (Spinner) getActivity().findViewById(R.id.spinner_ingredient);
+        btnSearch = getActivity().findViewById(R.id.button_search_ingredient);
 
         btnSearch.setOnClickListener(this);
+
+        getAllIngredients();
 
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_search) {
+        if (v.getId() == R.id.button_search_ingredient) {
             btnSearchClick(v);
         }
     }
+//
+//    public void getSelectedIngredient(View v) {
+//        Ingredient_ ingredient = (Ingredient_) spinnerIngredient.getSelectedItem();
+//
+//    }
 
     private void btnSearchClick(View v) {
 
-        String searchedText = txtSearchDrink.getText().toString();
+        SearchIngredient_ ingredient = (SearchIngredient_) spinnerIngredient.getSelectedItem();
+        ingredientName = ingredient.getIngredientName();
 
         service = RetrofitClientInstance.getRetrofitInstance().create(DataServices.class);
 
-        Call<Drink> call = service.searchDrinks(searchedText, null, null);
+        Call<Drink> call = service.filterDrinks(null, ingredientName);
 
         call.enqueue(new Callback<Drink>() {
             @Override
@@ -96,18 +106,6 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                     drinks = new ArrayList<>(drinkList.getDrinkList());
 
                     fillRecyclerView();
-//                    for (Drink_ drink : drinks) {
-//                        String content = "";
-//                        content += "ID:        " + drink.getID() + "\n";
-//                        content += "Name:      " + drink.getName() + "\n";
-//                        content += "Category:  " + drink.getCategory() + "\n";
-//                        content += "Alcoholic: " + drink.getAlcoholic() + "\n";
-//                        content += "Glass:     " + drink.getGlass() + "\n";
-//                        content += "IBA:       " + drink.getIBA() + "\n";
-//                        content += "Steps:     " + drink.getSteps() + "\n";
-//
-//                        textDisplay.append(content);
-//                    }
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -141,4 +139,38 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         });
     }
 
+    private void getAllIngredients() {
+
+        service = RetrofitClientInstance.getRetrofitInstance().create(DataServices.class);
+
+        Call<SearchIngredient> call = service.getAllIngredients();
+
+        call.enqueue(new Callback<SearchIngredient>() {
+            @Override
+            public void onResponse(Call<SearchIngredient> call, Response<SearchIngredient> response) {
+                if (!response.isSuccessful()) {
+                    return;
+                }
+
+                try {
+                    SearchIngredient ingredientList = response.body();
+                    ingredients = new ArrayList<>(ingredientList.getIngredientList());
+
+                    ArrayAdapter<SearchIngredient_> ingredientAdapter = new ArrayAdapter<SearchIngredient_>(getActivity().getApplicationContext(),
+                            android.R.layout.simple_spinner_item, ingredients);
+
+                    ingredientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                    spinnerIngredient.setAdapter(ingredientAdapter);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchIngredient> call, Throwable t) {
+            }
+        });
+    }
 }

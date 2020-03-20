@@ -1,5 +1,7 @@
 package com.example.thecocktailsapp;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Ingredient_ {
@@ -74,4 +76,5 @@ public class Ingredient_ {
     public void setABV(String ABV) {
         this.ABV = ABV;
     }
+
 }

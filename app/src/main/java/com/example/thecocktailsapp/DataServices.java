@@ -16,4 +16,20 @@ public interface DataServices {
             @Query("f") String byFirstLetter,
             @Query("i") String byIngredientName
     );
+
+    @GET("list.php?i=list")
+    Call<SearchIngredient> getAllIngredients();
+
+    @GET("list.php?c=list")
+    Call<Category> getAllCategories();
+
+    @GET("filter.php")
+    Call<Drink> filterDrinks(
+            @Query("c") String categoryName,
+            @Query("i") String ingredientName
+    );
+
+    @GET("lookup.php")
+    Call<Drink> getDrinkDetails(@Query("i") String drinkID);
+
 }
