@@ -1,8 +1,11 @@
 package com.example.thecocktailsapp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Drink_ {
+public class Drink_ implements Parcelable {
 
     @SerializedName("idDrink")
     private String ID;
@@ -27,6 +30,29 @@ public class Drink_ {
 
     @SerializedName("strIBA")
     private String IBA;
+
+    protected Drink_(Parcel in) {
+        ID = in.readString();
+        name = in.readString();
+        imageUrl = in.readString();
+        category = in.readString();
+        alcoholic = in.readString();
+        glass = in.readString();
+        steps = in.readString();
+        IBA = in.readString();
+    }
+
+    public static final Creator<Drink_> CREATOR = new Creator<Drink_>() {
+        @Override
+        public Drink_ createFromParcel(Parcel in) {
+            return new Drink_(in);
+        }
+
+        @Override
+        public Drink_[] newArray(int size) {
+            return new Drink_[size];
+        }
+    };
 
     /**
      * Getters & Setters
@@ -94,5 +120,22 @@ public class Drink_ {
 
     public void setIBA(String IBA) {
         this.IBA = IBA;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(ID);
+        dest.writeString(name);
+        dest.writeString(imageUrl);
+        dest.writeString(category);
+        dest.writeString(alcoholic);
+        dest.writeString(glass);
+        dest.writeString(steps);
+        dest.writeString(IBA);
     }
 }
